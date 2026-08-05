@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 0: Boas-vindas e Acesso ao Real Oficial</title>
+    
+    <!-- Importação de Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* 1. CONFIGURAÇÕES GERAIS (DESIGN SYSTEM) */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #020617; /* Slate-955 */
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Evita scroll na página, foca nos slides */
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Contentor principal que vai sofrer scale na janela */
+        #presentation-area {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            transform-origin: center center;
+            transition: transform 0.2s ease;
+        }
+
+        /* 2. DESIGN DOS SLIDES (Otimizado para transições) */
+        .slide-container {
+            align-items: center;
+            background-color: #0f172a; /* Slate-900 */
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px 80px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1280px;
+            
+            /* Lógica de Transição Suave */
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.98);
+            transition: all 0.4s ease-out;
+            z-index: 1;
+        }
+
+        .slide-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            z-index: 5;
+        }
+
+        /* Detalhes de iluminação de fundo */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 3. BARRA DE NAVEGAÇÃO GLOBAL (INTERATIVA) */
+        .global-nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #94a3b8;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f8fafc;
+        }
+
+        .nav-btn.active {
+            background: #00f2fe;
+            color: #020617;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .nav-arrow {
+            font-size: 20px;
+            color: #a855f7;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(168, 85, 247, 0.1);
+            color: #d8b4fe;
+        }
+
+        /* 4. TIPOGRAFIA */
+        .slide-container h1,
+        .slide-container h2,
+        .slide-container h3 {
+            color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .slide-container h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .slide-container span.accent {
+            color: #00f2fe;
+        }
+
+        .slide-container .slide-title {
+            font-size: 48px;
+            margin-bottom: 35px;
+            text-align: left;
+            width: 100%;
+            border-left: 5px solid #00f2fe;
+            padding-left: 20px;
+        }
+
+        .slide-container p,
+        .slide-container li,
+        .slide-container td {
+            color: #cbd5e1;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .slide-container .subtitle {
+            font-size: 26px;
+            color: #94a3b8;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* 5. LAYOUTS INTERNOS */
+        .content-area {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .highlight-box {
+            background: rgba(168, 85, 247, 0.05);
+            border: 2px dashed rgba(168, 85, 247, 0.3);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .highlight-box h3 {
+            color: #a855f7;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .highlight-box li {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+        }
+
+        .tiled-content {
+            display: flex;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .tile {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            flex: 1;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .tile .icon {
+            color: #00f2fe;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .tile h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .icon-tile {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 20px;
+            flex: 1;
+            padding: 40px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .icon-tile .huge-icon {
+            background: rgba(0, 242, 254, 0.1);
+            border-radius: 50%;
+            color: #00f2fe;
+            font-size: 50px;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+        }
+
+        .icon-tile h3 {
+            color: #f8fafc;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .table-layout { width: 100%; }
+        .table-layout table { width: 100%; border-collapse: collapse; }
+        .table-layout th { background: rgba(0, 242, 254, 0.1); color: #00f2fe; text-align: left; padding: 16px; font-family: 'Outfit'; font-size: 22px; }
+        .table-layout td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+
+        .timeline-layout { position: relative; width: 100%; display: flex; justify-content: space-between; margin-top: 40px; }
+        .timeline-line { position: absolute; top: 50%; width: 100%; height: 2px; background: rgba(255,255,255,0.1); z-index: 1; }
+        .timeline-item { position: relative; z-index: 2; width: 22%; background: #0f172a; padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(0,242,254,0.2); text-align: center; }
+
+        .editor-full-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; }
+        .feature-panel { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 30px; }
+        .feature-panel h4 { color: #00f2fe; font-family: 'Outfit'; font-size: 22px; margin: 0 0 10px 0; }
+
+        .number-big { font-size: 150px; font-weight: 700; color: #00f2fe; font-family: 'Outfit'; line-height: 1; text-shadow: 0 0 30px rgba(0, 242, 254, 0.2); }
+    </style>
+</head>
+<body>
+
+    <!-- CONTAINER DOS SLIDES -->
+    <div id="presentation-area">
+
+        <!-- Slide 1 -->
+        <div class="slide-container active" id="slide1">
+            <div class="content-area">
+                <h1>Bem-vindo ao <span class="accent">Iniciante</span></h1>
+                <p class="subtitle">Módulo 0: Introdução e Acesso à Plataforma <span class="accent">Real Oficial</span></p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide-container" id="slide2">
+            <div class="content-area">
+                <h2 style="font-size: 64px; text-align: center; margin-bottom: 20px;">Conheça a Sua <span class="accent">Parceria</span></h2>
+                <p class="subtitle" style="max-width: 900px; line-height: 1.8;">
+                    A <strong>Real Oficial</strong> não é um site de estudos. Trata-se de uma plataforma parceira inovadora repleta de ferramentas de Inteligência Artificial para facilitar os seus cortes de vídeo e automatizar o seu trabalho.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide-container" id="slide3">
+            <h2 class="slide-title">Plataforma vs <span class="accent">Curso</span></h2>
+            <div class="content-area">
+                <div class="two-column">
+                    <div>
+                        <h3>O Guia e o Motor</h3>
+                        <p>Durante a nossa formação, vamos diferenciar claramente estes dois mundos:</p>
+                        <p><strong>O Nosso Curso:</strong> Onde aprende a estratégia, como escolher os melhores nichos, estruturar roteiros dinâmicos e viralizar nas redes sociais.</p>
+                        <p><strong>A Real Oficial:</strong> O motor de produção prático. O sítio onde os seus vídeos são cortados, legendados e prontos em minutos.</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>Recursos Inclusos</h3>
+                        <ul>
+                            <li>Editor Completo Integrado</li>
+                            <li>Inteligência Artificial para Cortes</li>
+                            <li>Layouts dinâmicos</li>
+                            <li>Sincronização rápida de áudio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide-container" id="slide4">
+            <h2 class="slide-title">Super <span class="accent">Funcionalidades</span></h2>
+            <div class="content-area">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-scissors"></i></div>
+                        <h3>Cortes com IA</h3>
+                        <p>A tecnologia analisa os vídeos longos e extrai os momentos com maior potencial de retenção e viralização automaticamente.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-closed-captioning"></i></div>
+                        <h3>Legendagem</h3>
+                        <p>Gere legendas animadas, dinâmicas e coloridas com apenas um clique para reter a atenção do espectador.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-expand"></i></div>
+                        <h3>Smart Reframe</h3>
+                        <p>Adapta o vídeo horizontal original para o formato vertical (9:16) focando sempre de forma automática na pessoa que fala.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide-container" id="slide5">
+            <h2 class="slide-title">O Editor <span class="accent">Interno</span></h2>
+            <div class="content-area">
+                <div class="editor-full-layout">
+                    <div class="feature-panel">
+                        <h4>Timeline Multi-camadas</h4>
+                        <p>Faça cortes secos, adicione imagens de apoio e ajuste o áudio de forma ultra-rápida diretamente pelo navegador.</p>
+                    </div>
+                    <div class="feature-panel">
+                        <h4>Estilos Personalizados</h4>
+                        <p>Defina esquemas de cores e estilos de fonte uma única vez e aplique a todos os seus vídeos em segundos.</p>
+                    </div>
+                    <div class="feature-panel" style="grid-column: span 2;">
+                        <h4>Otimizado para Viralização</h4>
+                        <p>Diferente dos editores tradicionais complexos, esta interface foi construída especificamente para quem quer produzir conteúdo curto e dinâmico com facilidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide-container" id="slide6">
+            <h2 class="slide-title">Porquê usar a <span class="accent">Real Oficial</span>?</h2>
+            <div class="content-area">
+                <div class="table-layout">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Funcionalidade</th>
+                                <th>Aplicações Comuns</th>
+                                <th>Real Oficial (Parceira)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Criação de Cortes</td>
+                                <td>Processo manual demorado</td>
+                                <td>Automático e inteligente por IA</td>
+                            </tr>
+                            <tr>
+                                <td>Legendagem</td>
+                                <td>Trabalho frame a frame</td>
+                                <td>Sincronização imediata em 1 clique</td>
+                            </tr>
+                            <tr>
+                                <td>Identificação de Ganchos</td>
+                                <td>Requer análise manual sua</td>
+                                <td>IA sugere os momentos de pico</td>
+                            </tr>
+                            <tr>
+                                <td>Escalabilidade</td>
+                                <td>Um vídeo editado de cada vez</td>
+                                <td>Edição rápida de múltiplos cortes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide-container" id="slide7">
+            <h2 class="slide-title">Seu Fluxo de <span class="accent">Trabalho</span></h2>
+            <div class="content-area">
+                <div class="timeline-layout">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item">
+                        <h3 class="accent">1. Teoria</h3>
+                        <p>Aprenda a estratégia de captação e ganchos aqui no curso.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="accent">2. Ferramenta</h3>
+                        <p>Aceda à Real Oficial e importe o vídeo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="accent">3. Ajuste</h3>
+                        <p>Utilize as sugestões de IA e o editor nativo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="accent">4. Viral</h3>
+                        <p>Poste nas suas redes e acumule visualizações.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide-container" id="slide8">
+            <h2 class="slide-title">Produção em <span class="accent">Escala</span></h2>
+            <div class="content-area">
+                <div class="two-column" style="align-items: center; grid-template-columns: 0.8fr 1.2fr;">
+                    <div class="number-big" style="text-align: center;">50+</div>
+                    <div>
+                        <h3>Vídeos por Semana</h3>
+                        <p>Enquanto um editor tradicional demora horas a preparar e exportar um único vídeo, a combinação da nossa estratégia com a Real Oficial permite gerar dezenas de conteúdos de alta qualidade com poucos cliques.</p>
+                        <p>Consistência e volume andam de mãos dadas rumo ao sucesso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9 -->
+        <div class="slide-container" id="slide9">
+            <div class="content-area">
+                <h2 style="font-size: 64px; text-align: center;">Como Ativar o Seu <span class="accent">Acesso</span></h2>
+                <p class="subtitle" style="max-width: 800px; line-height: 1.8;">
+                    Preparamos um guia passo a passo simples e prático para que qualquer pessoa consiga conectar o curso à plataforma e começar a editar ainda hoje.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 10 -->
+        <div class="slide-container" id="slide10">
+            <h2 class="slide-title">Passo a Passo de <span class="accent">Acesso</span></h2>
+            <div class="content-area">
+                <div style="width: 100%; max-width: 900px;">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 25px; display: flex; align-items: start; gap: 20px;">
+                            <span style="background:#00f2fe; color:#020617; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:700; font-size: 18px;">1</span>
+                            <div>
+                                <p style="margin:0; font-size: 22px; color:#fff;"><strong>Entre no Portal Oficial:</strong></p>
+                                <p style="margin:0; font-size: 18px;">Aceda ao site <span class="accent">realoficial.com.br/pt</span>.</p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 25px; display: flex; align-items: start; gap: 20px;">
+                            <span style="background:#00f2fe; color:#020617; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:700; font-size: 18px;">2</span>
+                            <div>
+                                <p style="margin:0; font-size: 22px; color:#fff;"><strong>Registo e Parceria:</strong></p>
+                                <p style="margin:0; font-size: 18px;">Crie a sua conta de criador utilizando os dados sugeridos no suporte.</p>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 0px; display: flex; align-items: start; gap: 20px;">
+                            <span style="background:#00f2fe; color:#020617; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:700; font-size: 18px;">3</span>
+                            <div>
+                                <p style="margin:0; font-size: 22px; color:#fff;"><strong>Abra o Editor Online:</strong></p>
+                                <p style="margin:0; font-size: 18px;">Encontre as secções de "Criação de Cortes com IA" e o estúdio de edição.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11 -->
+        <div class="slide-container" id="slide11">
+            <h2 class="slide-title">Os Nossos 3 <span class="accent">Pilares</span></h2>
+            <div class="content-area">
+                <div class="tiled-content">
+                    <div class="icon-tile">
+                        <div class="huge-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>1. Aprender</h3>
+                        <p>Entenda o algoritmo e as técnicas de ganchos em cada aula teórica.</p>
+                    </div>
+                    <div class="icon-tile">
+                        <div class="huge-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3>2. Aplicar</h3>
+                        <p>Use a automação inteligente do Real Oficial para criar e ajustar vídeos na hora.</p>
+                    </div>
+                    <div class="icon-tile">
+                        <div class="huge-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h3>3. Faturar</h3>
+                        <p>Ganhe velocidade, poste com consistência e monetiza os teus resultados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12 -->
+        <div class="slide-container" id="slide12">
+            <div class="content-area">
+                <h2 class="accent" style="font-size: 80px; text-align: center;">Tudo Pronto?</h2>
+                <p class="subtitle" style="margin-bottom: 40px;">Já tem a estratégia e a melhor ferramenta integrada na sua mão.</p>
+                <div style="background: rgba(0,242,254,0.1); padding: 30px; border-radius: 20px; border: 1px dashed #00f2fe; text-align: center; width: 100%; max-width: 600px;">
+                    <h3 style="margin-bottom: 10px;">Próximo Passo:</h3>
+                    <p style="margin:0; font-size: 24px;"><strong>Módulo 1: Mentalidade do Mercado</strong></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CONTROLES NAVEGAÇÃO GLOBAL -->
+    <div class="global-nav">
+        <button class="nav-btn nav-arrow" id="prevBtn" onclick="prevSlide()" title="Slide Anterior (Seta Esquerda)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        
+        <div id="nav-dots" style="display: flex; gap: 8px;">
+            <!-- Botões gerados via Javascript -->
+        </div>
+        
+        <button class="nav-btn nav-arrow" id="nextBtn" onclick="nextSlide()" title="Próximo Slide (Seta Direita)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- JAVASCRIPT: Lógica Interativa da Apresentação -->
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide-container');
+        const totalSlides = slides.length;
+        const dotsContainer = document.getElementById('nav-dots');
+
+        function initPresentation() {
+            // Gera botões para cada slide dinamicamente
+            slides.forEach((slide, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'nav-btn';
+                btn.innerText = index + 1;
+                btn.onclick = () => goToSlide(index);
+                dotsContainer.appendChild(btn);
+            });
+
+            // Mostra primeiro slide e redimensiona o ecrã
+            goToSlide(0);
+            resizePresentation();
+            
+            // Navegação por setas do teclado
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+                if(e.key === 'ArrowLeft') prevSlide();
+            });
+
+            // Ajusta o tamanho quando a janela muda (Responsivo)
+            window.addEventListener('resize', resizePresentation);
+        }
+
+        function resizePresentation() {
+            // Mantém a proporção do slide visível num ecrã menor/maior
+            const area = document.getElementById('presentation-area');
+            const scale = Math.min(window.innerWidth / 1350, window.innerHeight / 850);
+            area.style.transform = `scale(${scale})`;
+        }
+
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            
+            // Oculta slide atual
+            slides[currentSlideIndex].classList.remove('active');
+            
+            // Mostra novo slide
+            currentSlideIndex = index;
+            slides[currentSlideIndex].classList.add('active');
+            
+            updateNavigationUI();
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlideIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlideIndex - 1);
+        }
+
+        function updateNavigationUI() {
+            // Atualiza cor do botão ativo
+            const dots = dotsContainer.children;
+            for(let i=0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === currentSlideIndex);
+            }
+            
+            // Desabilita as setas se estiver nos limites
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (currentSlideIndex === 0) {
+                prevBtn.style.opacity = '0.3';
+                prevBtn.style.cursor = 'not-allowed';
+            } else {
+                prevBtn.style.opacity = '1';
+                prevBtn.style.cursor = 'pointer';
+            }
+            
+            if (currentSlideIndex === totalSlides - 1) {
+                nextBtn.style.opacity = '0.3';
+                nextBtn.style.cursor = 'not-allowed';
+            } else {
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // Iniciar após carregar página
+        window.onload = initPresentation;
+    </script>
+</body>
+</html>

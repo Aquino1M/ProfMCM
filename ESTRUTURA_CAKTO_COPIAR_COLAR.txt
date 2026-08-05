@@ -1,0 +1,135 @@
+MÉTODO MILIONÁRIO - ESTRUTURA PARA COPIAR NA CAKTO
+
+Módulo 0
+  - Aula 1: Boas-vindas e Acesso ao Real Oficial
+    Objetivo: O aluno entende o mapa do curso, a função da Real Oficial e como começar sem travar.
+    Entrega: Print do acesso + meta pessoal de 30 dias.
+  Material: materiais_modulos/modulo_0_boas_vindas.pdf
+
+Módulo 1
+  - Aula 1: Mentalidade do Mercado
+    Objetivo: O aluno troca a mentalidade de “editar bonito” por “reter atenção e resolver um objetivo”.
+    Entrega: Matriz de posicionamento pronta.
+  Material: materiais_modulos/modulo_1_mentalidade_do_mercado.pdf
+
+Módulo 2
+  - Aula 1: Estrutura do Corte Viral: Hook e Contexto
+    Objetivo: O aluno aprende a começar o corte no ponto certo e prender a pessoa antes dela rolar a tela.
+    Entrega: 15 hooks escritos.
+  - Aula 2: Estrutura do Corte Viral: Retenção e Final
+    Objetivo: O aluno organiza o corte em começo forte, desenvolvimento limpo e final com ação.
+    Entrega: Um corte finalizado + pergunta para comentários.
+  Material: materiais_modulos/modulo_2_estrutura_do_corte_viral.pdf
+
+Módulo 3
+  - Aula 1: Edição Profissional: Setup CapCut e Real Oficial
+    Objetivo: O aluno configura ambiente de edição rápido e padronizado.
+    Entrega: Pasta profissional pronta.
+  - Aula 2: Legendas que Seguram Atenção
+    Objetivo: O aluno aprende a usar legenda como retenção, não apenas transcrição.
+    Entrega: Vídeo com legenda revisada.
+  - Aula 3: Ritmo, Zoom, Cortes Secos e B-roll
+    Objetivo: O aluno aprende a dar movimento sem destruir a fala principal.
+    Entrega: Comparativo antes/depois.
+  - Aula 4: Exportação, Qualidade e Padrão Visual
+    Objetivo: O aluno exporta sem perder qualidade e cria identidade para a página.
+    Entrega: Arquivo final pronto para postagem.
+  Material: materiais_modulos/modulo_3_edicao_profissional.pdf
+
+Módulo 4
+  - Aula 1: Como Encontrar Conteúdo: Nichos que Dão Corte
+    Objetivo: O aluno aprende a escolher nichos com assunto, emoção e monetização.
+    Entrega: Banco inicial de conteúdo.
+  - Aula 2: Onde Achar Podcasts, Lives e YouTubers
+    Objetivo: O aluno aprende a garimpar vídeos longos e encontrar trechos com potencial.
+    Entrega: Fila de 10 cortes.
+  - Aula 3: Direitos, Ética e Conteúdo Transformativo
+    Objetivo: O aluno entende como reduzir risco e criar valor real, principalmente em cortes de terceiros.
+    Entrega: Modelo de autorização preenchido.
+  Material: materiais_modulos/modulo_4_conteudo_direitos_e_etica.pdf
+
+Módulo 5
+  - Aula 1: Postagem: Horários, Título, Legenda e Distribuição
+    Objetivo: O aluno aprende a postar com método em vez de jogar vídeo no feed.
+    Entrega: 3 posts prontos com título, legenda e hashtag.
+  - Aula 2: Algoritmo na Prática: Métricas que Mandam
+    Objetivo: O aluno aprende a ler métricas e decidir o que repetir ou corrigir.
+    Entrega: Relatório simples de métricas.
+  Material: materiais_modulos/modulo_5_postagem_e_metricas.pdf
+
+Módulo 6
+  - Aula 1: Monetização e Primeiros Clientes
+    Objetivo: O aluno entende caminhos reais para ganhar dinheiro com cortes sem depender só de monetização da plataforma.
+    Entrega: Proposta comercial pronta.
+  Material: materiais_modulos/modulo_6_monetizacao_e_clientes.pdf
+
+Módulo 7
+  - Aula 1: Plano de Ação de 30 Dias
+    Objetivo: O aluno sai com rotina diária para produzir, postar, medir e evoluir.
+    Entrega: Plano mensal individual.
+  Material: materiais_modulos/modulo_7_plano_de_30_dias.pdf
+
+Módulo Extra 1
+  - Aula 1: Análise de Cortes: Retenção, Comentários e Compartilhamentos
+    Objetivo: O aluno aprende a diagnosticar por que um corte performou ou morreu.
+    Entrega: Diagnóstico de cortes.
+  - Aula 2: Correção de Erros e Testes A/B
+    Objetivo: O aluno aprende a corrigir cortes com método e testar sem virar bagunça.
+    Entrega: 2 versões corrigidas.
+  Material: materiais_modulos/modulo_extra_1_analise_e_testes.pdf
+
+Módulo Extra 2
+  - Aula 1: Crescimento: Páginas Virais e Posicionamento
+    Objetivo: O aluno cria uma página com promessa clara, identidade e linha editorial.
+    Entrega: Plano editorial da página.
+  - Aula 2: Estratégia de Volume sem Perder Qualidade
+    Objetivo: O aluno escala produção com calendário, lotes e reaproveitamento inteligente.
+    Entrega: Lote pronto para a semana.
+  Material: materiais_modulos/modulo_extra_2_crescimento_e_volume.pdf
+
+Módulo Agência
+  - Aula 1: Escala Profissional: Equipe, Funções e Processo
+    Objetivo: O aluno aprende a transformar edição em operação com papéis claros.
+    Entrega: Mapa de equipe e responsabilidades.
+  - Aula 2: Pacotes, Precificação e Proposta de Agência
+    Objetivo: O aluno monta pacotes profissionais com preço, entrega e limite claro.
+    Entrega: Tabela de pacotes pronta.
+  Material: materiais_modulos/modulo_agencia.pdf
+
+Módulo Operação
+  - Aula 1: Contratos, Briefing e Recorrência
+    Objetivo: O aluno aprende a fechar cliente com segurança e recorrência.
+    Entrega: Kit de fechamento pronto.
+  - Aula 2: Relatórios, Network e Indicação de Clientes
+    Objetivo: O aluno aprende a provar valor e gerar novos clientes por indicação.
+    Entrega: Relatório + mensagem de indicação.
+  Material: materiais_modulos/modulo_operacao.pdf
+
+BIBLIOTECA ESTRATÉGICA
+  - Captação 16:9 preparada para cortes 9:16
+    Objetivo: Como gravar vídeos horizontais pensando no recorte vertical, com zona segura, respiro acima da cabeça, iluminação e revisão do reenquadramento.
+    Exercício: Desenhe uma zona vertical sobre uma imagem 16:9 e marque onde devem ficar rosto, legendas e elementos de interface.
+  - 8 modelos de hooks para conteúdo educativo
+    Objetivo: Banco prático de aberturas: erro comum, segredo do mercado, ferramenta desconhecida, mito, guia em passos, estudo de caso, pergunta contraintuitiva e microaprendizado.
+    Exercício: Pegue um trecho educativo e escreva três hooks: erro comum, guia em passos e pergunta contraintuitiva.
+  - Teste A/B de hooks sem confundir os dados
+    Objetivo: Método para comparar duas aberturas mantendo o corpo do vídeo igual e alterando apenas uma variável verbal, visual ou textual.
+    Exercício: Crie a ficha de duas versões do mesmo corte e escreva qual variável está sendo testada.
+  - Painel de métricas para aprender com cada postagem
+    Objetivo: Leitura de retenção inicial, tempo médio, conclusão, repetição, compartilhamentos, salvamentos, comentários e conversão em seguidores.
+    Exercício: Preencha uma análise de um vídeo publicado: acerto, gargalo, hipótese e próximo teste.
+  - 7 falhas de legendas automáticas e revisão profissional
+    Objetivo: Revisão de transcrição, nomes próprios, termos técnicos, sincronismo, contraste, excesso de texto e zonas seguras.
+    Exercício: Revise um corte automático e registre todas as correções antes da exportação.
+  - Checklist final antes de publicar
+    Objetivo: Controle de qualidade de hook, contexto, enquadramento, legendas, áudio, ritmo, identidade visual, CTA, metadados e arquivo limpo.
+    Exercício: Use o checklist em três cortes e marque quais erros apareceram mais de uma vez.
+  - Workflow 1 para 15: transforme uma entrevista em uma fila de cortes
+    Objetivo: Organização de uma entrevista em cortes de curiosidade, valor educacional e conexão humana, seguida de triagem, edição, revisão e calendário.
+    Exercício: Analise 30 minutos de entrevista e selecione seis candidatos: dois por categoria.
+  - Cross-posting com adaptação para TikTok, Reels e Shorts
+    Objetivo: Como distribuir um arquivo-base limpo em diferentes redes, adaptando embalagem, título, descrição, hashtags e recursos nativos.
+    Exercício: Crie três embalagens diferentes para o mesmo corte: TikTok, Reels e Shorts.
+  - Operação de agência: automação no trabalho braçal, humano na estratégia
+    Objetivo: Esteira para receber conteúdo, gerar candidatos, selecionar, aplicar padrão, revisar, aprovar, publicar e apresentar resultados.
+    Exercício: Desenhe sua esteira com responsável, prazo e critério de aprovação em cada etapa.
